@@ -11,4 +11,10 @@ class LoanApplication extends Model
     protected $guarded =[
         'id'
     ];
+
+
+    public function loan_type(){
+
+        return $this->belongsTo( LoanTypes::class);
+    }
 }

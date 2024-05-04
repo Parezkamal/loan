@@ -1,10 +1,9 @@
-<header class="bg-gradient-to-r from-blue-500 to-indigo-700 px-6 py-3">
+<header class="bg-gradient-to-r from-blue-500 to-indigo-700 px-6 py-4"> <!-- Increased the py-3 to py-4 -->
     <div class="flex items-center justify-between">
         <div class="flex items-center space-x-4">
-            <img src="user-profile-picture.jpg" alt="Logo" class="w-12 h-12 rounded-full">
+            <img src="{{asset('images/cihan.png')}}" alt="Logo" class="w-16 h-16 rounded-full cursor-pointer">
             <div>
-                <h2 class="text-xl font-semibold text-white">Title of the programme</h2>
-
+                <h2 class="text-xl font-semibold text-white">LOAN MANAGEMENT SYSTEM</h2> <!-- Adjusted the text size -->
             </div>
         </div>
         <div class="relative inline-block text-gray-200">
@@ -24,7 +23,6 @@
                     @csrf
                     <a href="{{route('logout')}}" onclick="event.preventDefault(); this.closest('form').submit();" class="block px-4 py-2 text-gray-800 hover:bg-gray-200">
                       Logout</a>
-
                     </form>
                 </li>
             </ul>

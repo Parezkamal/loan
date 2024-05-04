@@ -10,6 +10,7 @@
 </head>
 <body class="bg-gray-100 flex items-center justify-center min-h-screen">
     <div class="bg-white shadow-md rounded-lg p-8 w-full sm:w-96 max-w-md">
+        <img src="{{asset('images/cihan.png')}}" alt="">
         <h1 class="text-2xl font-semibold mb-4">Forgot Password</h1>
         <p class="text-gray-700 mb-4">Please enter your email address to receive a password reset link.</p>
         <form method="POST" action="{{ route('password.email') }}">

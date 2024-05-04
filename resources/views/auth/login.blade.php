@@ -7,10 +7,14 @@
     <link rel="stylesheet" href="{{ asset('backend/css/tailwind.min.css') }}">
     <title>Login Page</title>
 
+
+
+
 </head>
 
 <body class="bg-gray-100 flex items-center justify-center min-h-screen">
     <div class="bg-white shadow-md rounded-lg p-8 w-full sm:w-96">
+        <img src="{{asset('images/cihan.png')}}" alt="">
         <h1 class="text-2xl font-semibold mb-4 text-center">Login Form</h1>
         <form method="POST" action="{{route('login.store') }}">
             @csrf

@@ -19,6 +19,7 @@
 
             <!-- Page content -->
             <div class="flex-1 p-4 md:p-10"> <!-- Add responsive padding -->
+
                 @yield('content')
             </div>
         </div>

@@ -61,8 +61,9 @@ input:checked + .slider:before {
               <th class="py-2 px-4">Email</th>
               <th class="py-2 px-4">Account</th>
               <th class="py-2 px-4">Bank</th>
+              <th class="py-2 px-4">Months</th>
               <th class="py-2 px-4">AC Number</th>
-              <th class="py-2 px-4">Approve Loan</th>
+              <th class="py-2 px-4">Action</th>
             </tr>
           </thead>
           <tbody>
@@ -73,18 +74,24 @@ input:checked + .slider:before {
                 <td class="py-2 px-4">{{$ln->email}}</td>
                 <td class="py-2 px-4">{{$ln->amount}}</td>
                 <td class="py-2 px-4">{{$ln->bank}}</td>
+                <td class="py-2 px-4">{{$ln->installment_count}}</td>
                 <td class="py-2 px-4">{{$ln->account}}</td>
-                <td class="py-2 px-4">
+
 
 
 
                     <form action="{{route('user.toggle.role', $ln->id)}}"  method="POST">
                         @csrf
-                        <label class="switch">
-                          <input type="checkbox" name="role" onchange="this.form.submit()" {{($ln->status === 'admin' ) ? 'checked': ''}}>
-                          <span class="slider"></span>
+                        {{-- <label class="switch"> --}}
+                          {{-- <input type="checkbox" name="role" onchange="this.form.submit()" {{($ln->status === 'admin' ) ? 'checked': ''}}> --}}
+                          {{-- <span class="slider"></span> --}}
                         </label>
                     </form>
+                </td>
+
+                <td>
+                    <a href="{{route('loan.detail',$ln->id)}}" class="bg-blue-500 text-white px-2  px-2 rounded-md hover:bg-blue-600 transition duration-200">View </a>
+
                 </td>
 
             </tr>

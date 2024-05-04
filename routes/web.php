@@ -63,6 +63,11 @@ Route::middleware(['auth','role:admin'])->group(function(){
     Route::put('/admin/loan-types/{id}', [LoanTypesController::class,'updateLoanTypes'])->name('admin.update.loan.type');
 
     Route::get('/admin/all/loan/applications', [LoanController::class,'allLoanApplications'])->name('admin.all.loan.applications');
+    Route::get('/admin/all/approved/loans', [LoanController::class,'allApprovedLoan'])->name('admin.all.approved.loans');
+    Route::get('admin/loan/detail/{id}',[LoanController::class, 'loanDetails'])->name('loan.detail');
+    Route::post('admin/loan/{id}/toggle-status',[LoanController::class, 'toggleStatus'])->name('loan.toggle.status');
+
+
 });
 
 Route::middleware(['auth','role:user'])->group(function(){
@@ -73,7 +78,9 @@ Route::middleware(['auth','role:user'])->group(function(){
     Route::get('/user/update/password', [UserController::class,'updatePassword'])->name('user.password.update');
     Route::post('/user/store/password', [UserController::class,'storePassword'])->name('user.password.store');
 
-    Route::post('/user/loan/application', [LoanController::class,'loanApplication'])->name('user.loan.application');
+    Route::get('/user/loan/application', [LoanController::class,'loanApplication'])->name('user.loan.application');
+    Route::post('/user/loan/store', [LoanController::class,'loanStore'])->name('user.loan.store');
+    Route::get('/user/approved/loan', [LoanController::class,'approvedLoan'])->name('user.approved.loan');
 });
 
 Route::middleware('guest')->group(function () {

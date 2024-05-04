@@ -6,49 +6,100 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reset Password</title>
     <link rel="stylesheet" href="{{ asset('backend/css/tailwind.min.css') }}">
-
     @vite('resources/css/app.css')
+    <style>
+        body {
+            background-color: #f3f8ff; /* Light blue background color */
+        }
+
+        .card {
+            background-color: #ffffff; /* White background color for the card */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow */
+            border-radius: 10px; /* Rounded corners */
+            max-width: 400px; /* Max width for better readability */
+            margin: auto; /* Center the card horizontally */
+            padding: 40px 20px; /* Padding for content */
+            text-align: center; /* Center align text */
+        }
+
+        .form-input {
+            padding: 12px; /* Padding for inputs */
+            margin-bottom: 20px; /* Spacing between inputs */
+            width: 100%; /* Full width input */
+            border: 1px solid #d1d5db; /* Light gray border */
+            border-radius: 8px; /* Rounded corners */
+            outline: none; /* Remove outline */
+        }
+
+        .form-button {
+            background-color: #2563eb; /* Blue button color */
+            color: #ffffff; /* White text color */
+            padding: 12px; /* Padding for button */
+            border: none; /* No border */
+            border-radius: 8px; /* Rounded corners */
+            width: 100%; /* Full width button */
+            cursor: pointer; /* Cursor pointer on hover */
+            transition: background-color 0.3s ease; /* Smooth transition */
+        }
+
+        .form-button:hover {
+            background-color: #1e40af; /* Darker blue color on hover */
+        }
+
+        .form-button:focus {
+            outline: none; /* Remove outline on focus */
+        }
+
+        .back-link {
+            color: #2563eb; /* Blue link color */
+            text-decoration: none; /* Remove underline */
+            transition: color 0.3s ease; /* Smooth transition */
+        }
+
+        .back-link:hover {
+            color: #1e40af; /* Darker blue color on hover */
+        }
+    </style>
 </head>
 
-<body class="bg-gradient-to-br from-blue-400 to-purple-600 flex items-center justify-center min-h-screen">
-    <div class="bg-white shadow-md rounded-lg p-8 w-full sm:w-96">
-        <h1 class="text-3xl font-semibold mb-4 text-center text-gray-800">Reset Password</h1>
-        <p class="text-gray-700 mb-6 text-center">Please enter a new password for your account.</p>
+<body>
+    <div class="card">
+        <img src="{{asset('images/cihan.png')}}" alt="">
+        <h1 class="text-3xl font-semibold mb-4 text-gray-800">Reset Password</h1>
+        <p class="text-gray-700 mb-6">Please enter a new password for your account.</p>
         <form method="POST" action="{{ route('password.store') }}">
             @csrf
             <input type="hidden" name="token" value="{{ $request->route('token') }}">
 
             @if ($errors->has('email') || $errors->has('password'))
-                <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rouned relative mb-4" role="alert">
-                    <ul>
-                        @if ($errors->has('email'))
-                            <li>{{ $errors->first('email') }}</li>
-                        @endif
-                        @if ($errors->has('password'))
-                            <li>{{ $errors->first('password') }}</li>
-                        @endif
-                    </ul>
-                </div>
+            <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4"
+                role="alert">
+                <ul>
+                    @if ($errors->has('email'))
+                    <li>{{ $errors->first('email') }}</li>
+                    @endif
+                    @if ($errors->has('password'))
+                    <li>{{ $errors->first('password') }}</li>
+                    @endif
+                </ul>
+            </div>
             @endif
 
             <div class="mb-4">
-                <label for="email" class="block text-gray-700 font-medium">Current email</label>
-                <input type="email" id="email" name="email" value="{{ old('email', $request->email) }}" class="p-3 mt-1 block w-full bg-gray-200 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-blue-400 focus:border-transparent">
+                <input type="email" id="email" name="email" value="{{ old('email', $request->email) }}"
+                    class="form-input" placeholder="Current email" required>
             </div>
             <div class="mb-4">
-                <label for="password" class="block text-gray-700 font-medium">New Password</label>
-                <input type="password" id="password" name="password" class="p-3 mt-1 block w-full bg-gray-200 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-blue-400 focus:border-transparent">
+                <input type="password" id="password" name="password" class="form-input"
+                    placeholder="New Password" required>
             </div>
             <div class="mb-4">
-                <label for="confirmPassword" class="block text-gray-700 font-medium">Confirm Password</label>
-                <input type="password" id="password_confirmation" name="password_confirmation" class="p-3 mt-1 block w-full bg-gray-200 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-blue-400 focus:border-transparent">
+                <input type="password" id="password_confirmation" name="password_confirmation"
+                    class="form-input" placeholder="Confirm Password" required>
             </div>
-            <button type="submit" class="w-full bg-blue-500 text-blue-500 py-3 rounded-md hover:bg-green-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-400 transition duration-300 ease-in-out">
-                Reset Password
-            </button>
-
+            <button type="submit" class="form-button">Reset Password</button>
         </form>
-        <a href="{{ route('login.create') }}" class="block text-center mt-4 text-blue-500 hover:underline">Back to Login</a>
+        <a href="{{ route('login.create') }}" class="back-link block mt-4">Back to Login</a>
     </div>
 </body>
 

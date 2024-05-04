@@ -3,7 +3,7 @@
     <ul class="mt-8">
         <li class="my-3">
             <a href="#" class="flex items-center text-gray-300 hover:text-white">
-                Dashboard
+
             </a>
         </li>
         <li class="my-3">
@@ -54,7 +54,7 @@
                 </button>
                 <ul x-show="open" class="ml-4 mt-2 space-y-2">
                     <li><a href="{{route('admin.all.loan.applications')}}" class="text-gray-300 hover:text-white">View Loan Applications</a></li>
-                    {{-- <li><a href="#" class="text-gray-300 hover:text-white">Add Product</a></li> --}}
+                    <li><a href="{{route('admin.all.approved.loans')}}" class="text-gray-300 hover:text-white">View Approved Loans</a></li>
                 </ul>
             </div>
         </li>
