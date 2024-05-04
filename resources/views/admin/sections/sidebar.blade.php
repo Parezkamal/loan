@@ -6,6 +6,12 @@
 
             </a>
         </li>
+        {{--start dashboard--}}
+        <li class="my-3">
+           <a href="{{route('admin.dashboard')}}" class="text-gray-300 hover:text-white">Dashboard</a>
+        </li>
+        {{--end dashboard--}}
+
         <li class="my-3">
             <div x-data="{ open: false }">
                 <button @click="open = !open" class="flex items-center text-gray-300 hover:text-white">

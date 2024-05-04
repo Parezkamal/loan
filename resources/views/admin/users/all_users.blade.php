@@ -67,11 +67,11 @@ input:checked + .slider:before {
           <tbody>
             @foreach ($users as $key => $user)
             <tr>
-                <td class="py-2 px-4">{{$key + 1}}</td>
-                <td class="py-2 px-4">{{$user->name}}</td>
-                <td class="py-2 px-4">{{$user->email}}</td>
-                <td class="py-2 px-4">{{$user->role}}</td>
-                <td class="py-2 px-4">
+                <td class="py-2 px-4 text-center" >{{$key + 1}}</td>
+                <td class="py-2 px-4 text-center">{{$user->name}}</td>
+                <td class="py-2 px-4 text-center">{{$user->email}}</td>
+                <td class="py-2 px-4 text-center">{{$user->role}}</td>
+                <td class="py-2 px-4 text-center">
 
 
 
@@ -83,14 +83,18 @@ input:checked + .slider:before {
                         </label>
                     </form>
                 </td>
-                <td class="py-2 px-4">
-                    <a href="{{route('user.detail',$user->id)}}" class="bg-blue-500 text-white py-1 px-3 rounded-md hover:bg-blue-600 transition duration-200">View Details</a>
+                <td class="py-2 px-4 flex items-center space-x-2 text-center">
+                    <a href="{{ route('user.detail',$user->id) }}" class="inline-flex items-center px-3 py-1 rounded-md bg-blue-500 text-white hover:bg-blue-600 transition duration-200">
+                        <i class="fas fa-eye mr-2 fill-current"></i> View Details
+                    </a>
+
                     <form action="{{ route('delete.user', $user->id) }}" method="POST" id="delete-form{{ $user->id }}">
                         @csrf
                         @method('DELETE')
-                        <button type="button" onclick="confirmDelete({{ $user->id }})" class="bg-red-500 text-white py-1 px-3 rounded-md hover:bg-red-600 transition duration-200 ml-2">Delete</button>
+                        <button type="submit" class="inline-flex items-center px-3 py-1 rounded-md bg-red-500 text-white hover:bg-red-600 transition duration-200">
+                            <i class="fas fa-trash mr-2 fill-current"></i> Delete
+                        </button>
                     </form>
-
                 </td>
             </tr>
         @endforeach
